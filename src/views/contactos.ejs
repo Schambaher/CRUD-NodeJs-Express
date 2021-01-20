@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Crud NodeJs y Express</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">CRUD NodeJS y Express</a>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-7">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <th>n°</td>
+                        <th>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Correo</td>
+                        <td>Contraseña</td>
+                        <td>Acciones</td>
+                    </thead>
+                    <tbody>
+                        <% if (data){ %>
+                            <% for(let i=0; i < data.length; i++){ %>
+                                <tr>
+                                    <td><%= (i + 1) %></td>
+                                    <td><%= data[i].nombre %></td>
+                                    <td><%= data[i].apellido %></td>
+                                    <td><%= data[i].email %></td>
+                                    <td><%= data[i].clave %></td>
+                                    <td>
+                                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger">X</a>
+                                        <a href="/update/<%= data[i].id %>" class="btn btn-primary">A</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="nombre" placeholder="Nombre" class="form-control ">
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" name="apellido" placeholder="Apellido" class="form-control mt-3">
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="Correo" class="form-control mt-3">
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" name="clave" placeholder="Contraseña" class="form-control mt-3">
+                            </div>
+        
+                            <button type="submit" class="btn btn-primary mt-2">Guardar Contacto</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>
+
